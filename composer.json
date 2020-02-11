@@ -1,0 +1,24 @@
+{
+    "name": "drazenbebic/admin-bar-user-switching",
+    "description": "Extends the excellent User Switching plugin by John Blackbourn by adding a User Switching to the admin bar for quick and easy user switching.",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "Drazen Bebic",
+            "email": "drazen.bebic@outlook.com"
+        },
+        {
+            "name": "Mark Wilkinson",
+            "email": "drazen.bebic@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AdminBarUserSwitching\\": "includes/"
+        }
+    },
+    "require": {},
+    "config": {
+        "optimize-autoloader": true
+    }
+}

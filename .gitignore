@@ -1,0 +1,6 @@
+logs/debug.log
+logs/error.log
+vendor
+vendor/*
+.idea
+.idea/*
