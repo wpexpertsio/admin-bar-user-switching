@@ -1,16 +1,18 @@
 === Admin Bar User Switching ===
-Contributors: wpmarkuk
+Contributors: drazenbebic, wpmarkuk
 Donate link: http://markwilkinson.me/saythanks/
-Tags: users, user switching
+Tags: users, user switching, wordpress
 Requires at least: 3.1
-Tested up to: 4.7.3
-Stable tag: 1.1.1
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 5.3
+Stable tag: 1.2
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Extends the excellent User Switching plugin by John Blackbourn by adding a User Switching to the admin bar for quick and easy user switching.
 
 == Description ==
+
+This plugin was originally developed by [Mark Wilkinson](https://markwilkinson.me/).
 
 An admin bar “Switch to User” option is provided which on hover provides a search box where you can query a user to switch to. The results are links to switch to that user. This plugin is great for when you are building sites for clients and it is beneficial to see the site as your logged in client see's it.
 
@@ -55,9 +57,13 @@ It does indeed, although not too many! The following filters can be used.
 
 == Changelog ==
 
+= 1.2 - 2020-02-11 =
+* Update - WordPress 5.3 compatibility
+* Tweak - Update and modernize the codebase
+
 = 1.1.1 =
 * Only enqueue js if the user is logged in
-* Do not seperately enqueue jQuery as it is already stated as a dependancy
+* Do not seperately enqueue jQuery as it is already stated as a dependency
 
 = 1.1 =
 * Add keyboard navigation
@@ -84,7 +90,7 @@ It does indeed, although not too many! The following filters can be used.
 * Make sure the current logged in user does not appear in the search results
 
 = 1.0.2 =
-* Thanks for @johnbillion for pointing out the incorrect capabilities check for switch_to_user. This now checks against edit_user so users who can edit users will be the Swtich to link.
+* Thanks for @johnbillion for pointing out the incorrect capabilities check for switch_to_user. This now checks against edit_user so users who can edit users will be the Switch to link.
 
 = 1.0.1 =
 * Use switch_to_user user capability instead of is_super_admin when checking whether to display Switch to link in admin bar.

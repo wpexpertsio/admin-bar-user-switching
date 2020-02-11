@@ -102,7 +102,8 @@ final class Plugin extends Singleton
         wp_register_script(
             'abus_script',
             ABUS_JS_URL . 'abus_script.js',
-            array( 'jquery' )
+            array( 'jquery' ),
+            ABUS_PLUGIN_VERSION
         );
 
         $args = array(
