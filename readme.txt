@@ -1,6 +1,6 @@
 === Admin Bar User Switching ===
 Contributors: drazenbebic, wpmarkuk
-Donate link: http://markwilkinson.me/saythanks/
+Donate link: https://www.paypal.me/drazenbebic
 Tags: users, user switching, wordpress
 Requires at least: 3.1
 Tested up to: 5.3
