@@ -19,5 +19,5 @@ function abus_get_current_url($parse = false )
         return parse_url( $protocol . "://" . $_SERVER[ 'HTTP_HOST' ] . $port . $_SERVER[ 'REQUEST_URI' ] );
     }
 
-    return $protocol . "://" . $_SERVER[ 'HTTP_HOST' ] . $port . $_SERVER[ 'REQUEST_URI' ];
+    return apply_filters('abus_get_current_url', $protocol . "://" . $_SERVER[ 'HTTP_HOST' ] . $port . $_SERVER[ 'REQUEST_URI' ]);
 }
