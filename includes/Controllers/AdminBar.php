@@ -64,7 +64,7 @@ class AdminBar
                     $link = add_query_arg( 'redirect_to', apply_filters( 'abus_switch_to_url', $url ), $link );
                     $html .= '
                         <p class="result">
-                            <a href="' . esc_url( $link, $user ) . '">' . $user->display_name . '</a>
+                            <a href="' . esc_url( $link, $user ) . '">' . apply_filters( 'abus_display_name', $user->display_name, $user ) . '</a>
                         </p>
                     ';
                 }
