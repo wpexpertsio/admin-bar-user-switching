@@ -16,6 +16,11 @@ class AdminBar
     public function __construct()
     {
         add_action( 'wp_before_admin_bar_render', array( $this, 'output' ), 1 );
+        // Frontend hook - most themes will implement this
+        add_action( 'wp_footer', array( $this, 'footer' ), 1);
+        // Admin footer hook
+        add_action( 'admin_footer', array( $this, 'footer' ), 1);
+        add_thickbox();
     }
 
     /**
@@ -44,45 +49,10 @@ class AdminBar
                 array(
                     'id'    => 'abus_switch_to_user',
                     'title' => apply_filters( 'abus_switch_to_text', __( 'Switch to user', 'abus' ) ),
-                    'href'  => '#',
+                    'href'  => '#TB_inline?height=600&width=390&inlineId=abus_wrapper',
                 )
             );
 
-            // Build the user search form markup
-            $form = '
-                <div id="abus_wrapper">
-                    <form method="post" action="abus_user_search">
-                        <input id="abus_search_text"
-                               class=""
-                               name="abus_search_text"
-                               type="text"
-                               placeholder="' . __( 'Enter a username', 'abus' ) . '"/>
-
-                        <input id="abus_search_submit"
-                               class="button"
-                               name="abus_search_submit"
-                               type="submit" value="' . __( 'Search', 'abus' ) . '"/>
-
-                        <input name="abus_current_url"
-                               type="hidden"
-                               value="' . esc_url( abus_get_current_url() ) . '"/>
-
-                        <input name="abus_nonce"
-                               type="hidden"
-                               value="' . wp_create_nonce( 'abus_nonce' ) . '" />
-                    </form>
-                    <div id="abus_result"></div>
-                </div>
-            ';
-
-            // Add the admin bar sub menu item for the search form
-            $wp_admin_bar->add_menu(
-                array(
-                    'id'     => 'abus_user_search',
-                    'parent' => 'abus_switch_to_user',
-                    'title'  => apply_filters( 'abus_form_output', $form ),
-                )
-            );
         }
 
         // Check if there is an old user stored i.e. this logged in user is through switching
@@ -100,5 +70,46 @@ class AdminBar
                 )
             );
         }
+    }
+
+    public function footer()
+    {
+        // Don't display if the user doesn't have capability to switch users
+        if ( !current_user_can( apply_filters( 'abus_switch_to_capability', 'edit_users' ) ) ) {
+            return '';
+        }
+
+        /** @var user_switching $user_switching */
+        global $user_switching;
+
+        // Build the user search form markup
+        ?>
+            <div id="abus_wrapper">
+                <form method="post" action="abus_user_search">
+                    <input id="abus_search_text"
+                           class=""
+                           name="abus_search_text"
+                           type="text"
+                           placeholder="<?=__( 'Enter a username', 'abus' ); ?>"/>
+
+                    <input id="abus_search_submit"
+                           class="button"
+                           name="abus_search_submit"
+                           type="submit" value="<?=__( 'Search', 'abus' ); ?>"/>
+
+                    <input name="abus_current_url"
+                           type="hidden"
+                           value="<?=esc_url( abus_get_current_url() ); ?>"/>
+
+                    <input name="abus_nonce"
+                           type="hidden"
+                           value="<?=wp_create_nonce( 'abus_nonce' ); ?>" />
+                </form>
+                <p class="result">
+                    <a href="<?=$user_switching->switch_off_url( wp_get_current_user() ); ?>">Guest User / Switch Off</a>
+                </p>
+                <div id="abus_result"></div>
+            </div>
+        <?php
     }
 }

@@ -134,6 +134,9 @@ final class Plugin extends Singleton
                 #wpadminbar .quicklinks #wp-admin-bar-abus_switch_to_user ul li .ab-item {
                     height: auto;
                 }
+                #abus_wrapper {
+                    display: none;
+                }
                 #abus_search_text {
                     width: 280px;
                     margin: 0;
