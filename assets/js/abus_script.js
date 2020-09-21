@@ -11,10 +11,10 @@ jQuery( function( $ ) {
 	;
 
 	// Clicking the admin-bar entry focuses the text box
-	entryButton.on( 'click', function() {
+	entryButton.addClass('thickbox').on( 'click', function() {
 		$input.focus();
 
-		return false;
+		return true;
 	} );
 
 	// Navigate through results using arrows
